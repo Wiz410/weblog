@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Войти
+{% endblock title %}
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    {{ form.error }}
+    <button type="submit" class="btn btn-secondary">Войти</button>
+  </form>
+{% endblock content %}

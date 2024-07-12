@@ -4,10 +4,32 @@
   Войти
 {% endblock title %}
 {% block content %}
-  <form method="post">
-    {% csrf_token %}
-    {{ form }}
-    {{ form.error }}
-    <button type="submit" class="btn btn-secondary">Войти</button>
-  </form>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="card col-5">
+        <div class="card-body text-center">
+          <form method="post">
+            {% csrf_token %}
+            <div class="input-group flex-nowrap mb-3">
+              <span class="input-group-text">
+                <img src="{% static 'svg/person.svg' %}" height="30" class="card-img-top" alt="Почта">
+              </span>
+              {{ form.username }}
+            </div>
+            <div class="input-group flex-nowrap mb-3">
+              <span class="input-group-text">
+                <img src="{% static 'svg/key.svg' %}" height="30" class="card-img-top" alt="Пароль">
+              </span>
+              {{ form.password }}
+            </div>
+            <div class="form-text">
+              {{ form.non_field_errors }}
+            </div>
+            <input type="hidden" name="next" value="{{ next }}">
+            <button type="submit" class="btn btn-secondary mt-3">Войти</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}

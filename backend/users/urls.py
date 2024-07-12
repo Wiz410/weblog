@@ -1,22 +1,40 @@
 from django.urls import path
-from .views import WeBlogUserCreateView, WeBlogUserLoginView, WeBlogUserLogoutView
+from .views import (
+    UserCreateView, UserLoginView, UserLogoutView, UserListView,
+    UserUpdateView, UserPasswordChangeView
+)
 
 app_name = 'users'
 
 urlpatterns = [
     path(
         'registration/',
-        WeBlogUserCreateView.as_view(),
+        UserCreateView.as_view(),
         name='registration',
     ),
     path(
         'login/',
-        WeBlogUserLoginView.as_view(),
+        UserLoginView.as_view(),
         name='login',
     ),
     path(
         'logout/',
-        WeBlogUserLogoutView.as_view(),
+        UserLogoutView.as_view(),
         name='logout',
+    ),
+    path(
+        'settings/',
+        UserUpdateView.as_view(),
+        name='settings',
+    ),
+    path(
+        'password_change/',
+        UserPasswordChangeView.as_view(),
+        name='password_change',
+    ),
+    path(
+        '<slug:username>/',
+        UserListView.as_view(),
+        name='profile',
     ),
 ]

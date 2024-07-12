@@ -1,0 +1,1 @@
+OBJECTS_PER_PAGE: int = 30

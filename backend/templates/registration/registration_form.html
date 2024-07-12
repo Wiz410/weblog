@@ -10,4 +10,55 @@
     {{ form.error }}
     <button type="submit" class="btn btn-secondary">Зарегистрироваться</button>
   </form>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="card col-5">
+        <div class="card-body text-center">
+          <form method="post">
+            {% csrf_token %}
+            <div class="input-group flex-nowrap mb-3">
+              <span class="input-group-text">
+                <img src="{% static 'svg/person.svg' %}" height="30" class="card-img-top" alt="Почта">
+              </span>
+              {{ form.username }}
+            </div>
+            <div class="form-text mb-3">
+              {{ form.username.help_text }}
+            </div>
+            <div class="input-group flex-nowrap mb-3">
+              <span class="input-group-text">
+                <img src="{% static 'svg/envelope.svg' %}" height="30" class="card-img-top" alt="Почта">
+              </span>
+              {{ form.email }}
+            </div>
+            <div class="form-text mb-3">
+              {{ form.email.help_text }}
+            </div>
+            <div class="input-group flex-nowrap mb-3">
+              <span class="input-group-text">
+                <img src="{% static 'svg/key.svg' %}" height="30" class="card-img-top" alt="Пароль">
+              </span>
+              {{ form.password1 }}
+            </div>
+            <div class="form-text mb-3">
+              {{ form.password1.help_text }}
+            </div>
+            <div class="input-group flex-nowrap mb-3">
+              <span class="input-group-text">
+                <img src="{% static 'svg/key.svg' %}" height="30" class="card-img-top" alt="Пароль">
+              </span>
+              {{ form.password2 }}
+            </div>
+            <div class="form-text mb-3">
+              {{ form.password2.help_text }}
+            </div>
+            <div class="form-text mb-3">
+              {{ form.errors }}
+            </div>
+            <button type="submit" class="btn btn-secondary mt-3">Зарегистрироваться</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}

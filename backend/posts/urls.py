@@ -1,12 +1,12 @@
 from django.urls import path
-from .views import PostTemplateView
+from .views import PostListView
 
 app_name = 'posts'
 
 urlpatterns = [
     path(
         '',
-        PostTemplateView.as_view(),
+        PostListView.as_view(),
         name='list'
     ),
 ]

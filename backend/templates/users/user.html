@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Профиль {{ profile.username }}
+{% endblock title %}
+{% block content %}
+  {% if profile.image %}
+    <img href="{{ profile.image }}">
+  {% endif %}
+  {% if request.user == profile %}
+    <a href="{% url 'users:settings' %}">Настройки</a>
+  {% endif %}
+{% endblock content %}

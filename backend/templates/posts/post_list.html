@@ -4,5 +4,9 @@
   Регистрация
 {% endblock title %}
 {% block content %}
-  Пока пусто...
+  {% for obj in page_obj %}
+    <a href="{% url "users:profile" obj.username %}">
+      {{ obj }}
+    </a>
+  {% endfor %}
 {% endblock content %}

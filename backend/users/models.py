@@ -1,17 +1,19 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from core.models import BlockModel
 
-class WeBlogUser(AbstractUser):
+
+class WeBlogUser(BlockModel, AbstractUser):
     """Модель пользователя."""
     image = models.ImageField(
         upload_to='images/',
         blank=True,
+        null=True,
     )
-    is_block = models.BooleanField(
-        'блокировка пользователя',
-        default=False,
-    )
+
+    def __str__(self) -> str:
+        return self.username
 
 
 class Follow(models.Model):
@@ -32,3 +34,8 @@ class Follow(models.Model):
     class Meta:
         verbose_name = 'подписка'
         verbose_name_plural = 'Подписки'
+
+    def __str__(self) -> str:
+        return (
+            f'{self.user.username} подписан на {self.following.username}'
+        )

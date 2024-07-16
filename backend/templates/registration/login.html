@@ -8,13 +8,20 @@
     <div class="row justify-content-center">
       <div class="card col-5">
         <div class="card-body text-center">
+          <h1 class="card-title mb-3">Войти</h1>
           <form method="post">
             {% csrf_token %}
+            <div class="form-text text-danger flex-nowrap mb-1">
+              {{ form.username.errors }}
+            </div>
             <div class="input-group flex-nowrap mb-3">
               <span class="input-group-text">
                 <img src="{% static 'svg/person.svg' %}" height="30" class="card-img-top" alt="Почта">
               </span>
               {{ form.username }}
+            </div>
+            <div class="form-text text-danger flex-nowrap mb-1">
+              {{ form.password.errors }}
             </div>
             <div class="input-group flex-nowrap mb-3">
               <span class="input-group-text">
@@ -22,7 +29,7 @@
               </span>
               {{ form.password }}
             </div>
-            <div class="form-text">
+            <div class="form-text text-danger flex-nowrap mb-3">
               {{ form.non_field_errors }}
             </div>
             <input type="hidden" name="next" value="{{ next }}">

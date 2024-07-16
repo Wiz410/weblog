@@ -46,7 +46,8 @@ class Post(TitleModel, BlockModel):
         null=True,
     )
     tags = models.ManyToManyField(
-        Tag
+        Tag,
+        verbose_name='теги'
     )
     text = models.TextField(
         'тест поста',

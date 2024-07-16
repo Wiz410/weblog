@@ -7,10 +7,26 @@ from core.models import BlockModel
 class WeBlogUser(BlockModel, AbstractUser):
     """Модель пользователя."""
     image = models.ImageField(
+        'изображение',
         upload_to='images/',
         blank=True,
         null=True,
     )
+    email = models.EmailField(
+        'адрес электронной почты',
+        unique=True,
+        blank=False,
+    )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['username', 'email'],
+                name='unique_user'
+            )
+        ]
+        verbose_name = 'пользователь'
+        verbose_name_plural = 'Пользователи'
 
     def __str__(self) -> str:
         return self.username

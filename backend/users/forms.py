@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import get_user_model
 from django import forms
 
@@ -16,7 +16,7 @@ class WeBlogUserCreationForm(BootstrapFormMixin, UserCreationForm):
             'username',
             'email',
         )
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update({
@@ -56,3 +56,14 @@ class UserForm(BootstrapFormMixin, forms.ModelForm):
             'last_name',
             'email',
         )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control mb-3',
+            })
+
+
+class UserPasswordChangeForm(BootstrapFormMixin, PasswordChangeForm):
+    """Форма смены пароля."""

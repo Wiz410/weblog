@@ -3,7 +3,7 @@ from django.views.generic import CreateView, ListView, UpdateView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.urls import reverse, reverse_lazy
-from .forms import WeBlogUserCreationForm, WeBlogAuthenticationForm, UserForm
+from .forms import WeBlogUserCreationForm, WeBlogAuthenticationForm, UserForm, UserPasswordChangeForm
 
 from core import constants
 
@@ -62,4 +62,5 @@ class UserUpdateView(UpdateView):
 
 class UserPasswordChangeView(PasswordChangeView):
     """Страница смены пароля."""
+    form_class = UserPasswordChangeForm
     success_url = reverse_lazy('users:settings')
